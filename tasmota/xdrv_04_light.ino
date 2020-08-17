@@ -1651,12 +1651,12 @@ void LightPreparePower(power_t channels = 0xFFFFFFFF) {    // 1 = only RGB, 2 = 
         // if channel is non-null, channel is supposed to be on, but it is off, do Power On
         if ((Light.current_color[i]) && (!bitRead(Light.power, i))) {
           if (!Settings.flag.not_power_linked) {  // SetOption20 - Control power in relation to Dimmer/Color/Ct changes
-            ExecuteCommandPower(Light.device + i, POWER_ON_NO_STATE, SRC_LIGHT);
+            ExecuteCommandPower(Light.device + i, POWER_ON, SRC_LIGHT);
           }
         } else {
           // if channel is zero and channel is on, set it off
           if ((0 == Light.current_color[i]) && bitRead(Light.power, i)) {
-            ExecuteCommandPower(Light.device + i, POWER_OFF_NO_STATE, SRC_LIGHT);
+            ExecuteCommandPower(Light.device + i, POWER_OFF, SRC_LIGHT);
           }
         }
   #ifdef USE_DOMOTICZ
